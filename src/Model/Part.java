@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public abstract class Part {
 
@@ -26,7 +26,7 @@ public abstract class Part {
     private final IntegerProperty min;
     private final IntegerProperty max;
 
-    //Contructor
+    //Contructor declaration
     public Part() {
         partID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
@@ -52,7 +52,7 @@ public abstract class Part {
         return inStock;
     }
 
-//Getters
+//Getter helper functions
     public int getPartID() {
         return this.partID.get();
     }
@@ -77,7 +77,7 @@ public abstract class Part {
         return this.max.get();
     }
 
-    //Setters
+    //Setter Helper Functions
     public void setPartID(int partID) {
         this.partID.set(partID);
     }
@@ -102,7 +102,7 @@ public abstract class Part {
         this.max.set(max);
     }
 
-    //Part Validation Method
+    //Part Validation Method to check form input
     public static String isPartValid(String name, int min, int max, int inv, double price, String errorMessage) {
         if (name == null) {
             errorMessage = errorMessage + ("Name field is blank.");

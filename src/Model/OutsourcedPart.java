@@ -10,7 +10,7 @@ import javafx.beans.property.StringProperty;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class OutsourcedPart extends Part {
 

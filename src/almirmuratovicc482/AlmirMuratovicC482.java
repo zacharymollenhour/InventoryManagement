@@ -19,7 +19,7 @@ import static Model.Inventory.getPartInventory;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class AlmirMuratovicC482 extends Application {
     Stage window;

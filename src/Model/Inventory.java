@@ -10,7 +10,7 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class Inventory {
 

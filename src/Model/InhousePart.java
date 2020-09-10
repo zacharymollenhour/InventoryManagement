@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class InhousePart extends Part {
 

@@ -16,7 +16,7 @@ import javafx.collections.ObservableList;
 
 /**
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class Product {
 
@@ -39,7 +39,7 @@ public class Product {
         max = new SimpleIntegerProperty();
     }
 
-    //Getters
+    //Getter helper functions
     public IntegerProperty productIDProperty() {
         return productID;
     }
@@ -84,7 +84,7 @@ public class Product {
         return parts;
     }
 
-    //Setters
+    //Setter helper functions
     public void setProductID(int productID) {
         this.productID.set(productID);
     }
@@ -113,7 +113,7 @@ public class Product {
         this.parts = parts;
     }
 
-    //Product Validation Method
+    //Product Validation Method that checks the inputted data in the form
     public static String isProductValid(String name, int min, int max, int inv, double price, ObservableList<Part> parts, String message) {
         double sumParts = 0.00;
         for (int i = 0; i < parts.size(); i++) {
