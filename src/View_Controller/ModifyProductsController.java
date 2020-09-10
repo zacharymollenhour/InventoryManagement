@@ -35,7 +35,7 @@ import static Model.Inventory.getProductInventory;
 /**
  * FXML Controller class
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class ModifyProductsController implements Initializable {
 

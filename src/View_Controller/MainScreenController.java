@@ -39,7 +39,7 @@ import static Model.Inventory.removeProduct;
 /**
  * FXML Controller class
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class MainScreenController implements Initializable {
 

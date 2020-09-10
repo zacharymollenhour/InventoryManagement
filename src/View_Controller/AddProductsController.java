@@ -33,7 +33,7 @@ import static Model.Inventory.getPartInventory;
 /**
  * FXML Controller class
  *
- * @author almirmuratovic
+ * @author Zachary Mollenhour
  */
 public class AddProductsController implements Initializable {
 
