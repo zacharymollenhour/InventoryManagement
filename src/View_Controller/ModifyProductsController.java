@@ -36,18 +36,19 @@ import static Model.Inventory.getProductInventory;
  * FXML Controller class
  *
  * @author Zachary Mollenhour
+ * ALL CODE WRITTEN IS AUTHORED AND REVIEWED BY ZACHARY MOLLENHOUR
+ * 9/10/2020
  */
 public class ModifyProductsController implements Initializable {
 
+    /*Modify Products Controller Class
+
+     */
     private ObservableList<Part> currentParts = FXCollections.observableArrayList();
     private int productIndex = productToModifyIndex();
     private String exceptionMessage = new String();
     private int productID;
 
-    @FXML
-    private TextField ModifyProductsIDField;
-    @FXML
-    private TextField ModifyProductsMinField;
     @FXML
     private TextField ModifyProductsMaxField;
     @FXML
@@ -57,11 +58,23 @@ public class ModifyProductsController implements Initializable {
     @FXML
     private TextField ModifyProductsPriceField;
     @FXML
+    private TextField ModifyProductsIDField;
+    @FXML
+    private TextField ModifyProductsMinField;
+    @FXML
     private TextField ModifyProductAddPartSearchField;
     @FXML
     private TextField ModifyProductDeletePartSearchField;
     @FXML
     private TableView<Part> ModifyProductAddTableView;
+    @FXML
+    private TableColumn<Part, Integer> ModifyProductCurrentPartIDCol;
+    @FXML
+    private TableColumn<Part, String> ModifyProductCurrentPartNameCol;
+    @FXML
+    private TableColumn<Part, Integer> ModifyProductCurrentPartInvCol;
+    @FXML
+    private TableColumn<Part, Double> ModifyProductCurrentPartPriceCol;
     @FXML
     private TableColumn<Part, Integer> ModifyProductPartIDCol;
     @FXML
@@ -72,20 +85,7 @@ public class ModifyProductsController implements Initializable {
     private TableColumn<Part, Double> ModifyProductPartPriceCol;
     @FXML
     private TableView<Part> ModifyProductDeleteTableView;
-    @FXML
-    private TableColumn<Part, Integer> ModifyProductCurrentPartIDCol;
-    @FXML
-    private TableColumn<Part, String> ModifyProductCurrentPartNameCol;
-    @FXML
-    private TableColumn<Part, Integer> ModifyProductCurrentPartInvCol;
-    @FXML
-    private TableColumn<Part, Double> ModifyProductCurrentPartPriceCol;
 
-    @FXML
-    void ClearSearchAdd(ActionEvent event) {
-        updatePartTableView();
-        ModifyProductAddPartSearchField.setText("");
-    }
 
     @FXML
     void ClearSearchRemove(ActionEvent event) {
@@ -94,23 +94,14 @@ public class ModifyProductsController implements Initializable {
     }
 
     @FXML
-    void ModifyProductsSearchPartAddBtn(ActionEvent event) {
-        String searchPart = ModifyProductAddPartSearchField.getText();
-        int partIndex = -1;
-        if (Inventory.lookupPart(searchPart) == -1) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Search");
-            alert.setHeaderText("Part not found");
-            alert.setContentText("Search term not found.");
-            alert.showAndWait();
-        } else {
-            partIndex = Inventory.lookupPart(searchPart);
-            Part tempPart = Inventory.getPartInventory().get(partIndex);
-            ObservableList<Part> tempProdList = FXCollections.observableArrayList();
-            tempProdList.add(tempPart);
-            ModifyProductAddTableView.setItems(tempProdList);
-        }
+    void ClearSearchAdd(ActionEvent event) {
+        updatePartTableView();
+        ModifyProductAddPartSearchField.setText("");
     }
+
+
+
+
 
     @FXML
     void ModifyProductsAddButton(ActionEvent event) {
@@ -141,6 +132,32 @@ public class ModifyProductsController implements Initializable {
     }
 
     @FXML
+    void ModifyProductsSearchPartAddBtn(ActionEvent event) {
+        String searchPart = ModifyProductAddPartSearchField.getText();
+
+        //Index Variable
+        int partIndex = -1;
+
+        //Check if a product match is found
+        if (Inventory.lookupPart(searchPart) == -1) {
+            //No product Match
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Search");
+            alert.setHeaderText("Part not found");
+            alert.setContentText("Search term not found.");
+            alert.showAndWait();
+        } else {
+            //Product Match Found
+            partIndex = Inventory.lookupPart(searchPart);
+            Part tempPart = Inventory.getPartInventory().get(partIndex);
+            ObservableList<Part> tempProdList = FXCollections.observableArrayList();
+            tempProdList.add(tempPart);
+            ModifyProductAddTableView.setItems(tempProdList);
+        }
+    }
+
+    //Button for deleteting
+    @FXML
     void ModifyProductsDeleteButton(ActionEvent event) {
         Part part = ModifyProductDeleteTableView.getSelectionModel().getSelectedItem();
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -156,13 +173,18 @@ public class ModifyProductsController implements Initializable {
         }
     }
 
+    //Modify Product Button
     @FXML
     void ModifyProductsSaveButtonClicked(ActionEvent event) throws IOException {
+
+        //Product Variables
         String productName = ModifyProductsNameField.getText();
         String productInv = ModifyProductsInvField.getText();
         String productPrice = ModifyProductsPriceField.getText();
         String productMin = ModifyProductsMinField.getText();
         String productMax = ModifyProductsMaxField.getText();
+
+        //Try Catch Block
         try {
             exceptionMessage = Product.isProductValid(productName, Integer.parseInt(productMin), Integer.parseInt(productMax), Integer.parseInt(productInv),
                     Double.parseDouble(productPrice), currentParts, exceptionMessage);
@@ -199,6 +221,7 @@ public class ModifyProductsController implements Initializable {
         }
     }
 
+
     @FXML
     void ModifyProductsCancelClicked(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -220,7 +243,7 @@ public class ModifyProductsController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Initializes a controller class
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -246,6 +269,7 @@ public class ModifyProductsController implements Initializable {
         updateCurrentPartTableView();
     }
 
+    //Update the Part
     public void updatePartTableView() {
         ModifyProductAddTableView.setItems(getPartInventory());
     }

@@ -26,7 +26,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import almirmuratovicc482.AlmirMuratovicC482;
+import ZacharyMollenhour.ZacharyMollenhour;
 import Model.Inventory;
 import Model.Part;
 import static Model.Inventory.validatePartDelete;
@@ -40,19 +40,13 @@ import static Model.Inventory.removeProduct;
  * FXML Controller class
  *
  * @author Zachary Mollenhour
+ * ALL CODE WRITTEN IS AUTHORED AND REVIEWED BY ZACHARY MOLLENHOUR
+ * 9/10/2020
  */
+
+//Main Screen Controller
 public class MainScreenController implements Initializable {
 
-    @FXML
-    private TableView<Part> MainPartsTableView;
-    @FXML
-    private TableColumn<Part, Integer> MainPartIDCol;
-    @FXML
-    private TableColumn<Part, String> MainPartNameCol;
-    @FXML
-    private TableColumn<Part, Integer> MainPartInvCol;
-    @FXML
-    private TableColumn<Part, Double> MainPartPriceCol;
     @FXML
     private TableView<Product> MainProductsTableView;
     @FXML
@@ -64,15 +58,27 @@ public class MainScreenController implements Initializable {
     @FXML
     private TableColumn<Product, Double> MainProductPriceCol;
     @FXML
+    private TableView<Part> MainPartsTableView;
+    @FXML
+    private TableColumn<Part, Integer> MainPartIDCol;
+    @FXML
+    private TableColumn<Part, String> MainPartNameCol;
+    @FXML
+    private TableColumn<Part, Integer> MainPartInvCol;
+    @FXML
+    private TableColumn<Part, Double> MainPartPriceCol;
+    @FXML
     private TextField MainPartsSearchField;
     @FXML
     private TextField MainProductsSearchField;
 
+    //Private Local Variables
     private static Part modifyPart;
     private static int modifyPartIndex;
     private static Product modifyProduct;
     private static int modifyProductIndex;
 
+    //Functions
     public static int partToModifyIndex() {
         return modifyPartIndex;
     }
@@ -84,16 +90,18 @@ public class MainScreenController implements Initializable {
     public MainScreenController() {
     }
 
-    @FXML
-    void ClearSearchParts(ActionEvent event) throws IOException {
-        updatePartTableView();
-        MainPartsSearchField.setText("");
-    }
+
 
     @FXML
     void ClearSearchProducts(ActionEvent event) throws IOException {
         updateProductTableView();
         MainProductsSearchField.setText("");
+    }
+
+    @FXML
+    void ClearSearchParts(ActionEvent event) throws IOException {
+        updatePartTableView();
+        MainPartsSearchField.setText("");
     }
 
     @FXML
@@ -113,21 +121,23 @@ public class MainScreenController implements Initializable {
         }
     }
 
-    @FXML
-    void MainAddPartsClick(ActionEvent event) throws IOException {
 
-        Parent addParts = FXMLLoader.load(getClass().getResource("AddParts.fxml"));
-        Scene scene = new Scene(addParts);
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        window.setScene(scene);
-        window.show();
-    }
 
     @FXML
     void MainAddProductsClick(ActionEvent event) throws IOException {
 
         Parent addProducts = FXMLLoader.load(getClass().getResource("AddProducts.fxml"));
         Scene scene = new Scene(addProducts);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
+
+    @FXML
+    void MainAddPartsClick(ActionEvent event) throws IOException {
+
+        Parent addParts = FXMLLoader.load(getClass().getResource("AddParts.fxml"));
+        Scene scene = new Scene(addParts);
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
@@ -262,7 +272,7 @@ public class MainScreenController implements Initializable {
         MainProductsTableView.setItems(getProductInventory());
     }
 
-    public void setMainApp(AlmirMuratovicC482 mainApp) {
+    public void setMainApp(ZacharyMollenhour mainApp) {
         updatePartTableView();
         updateProductTableView();
     }

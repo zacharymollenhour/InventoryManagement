@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package almirmuratovicc482;
+package ZacharyMollenhour;
 
 import java.io.IOException;
 import javafx.application.Application;
@@ -11,24 +11,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import Model.InhousePart;
-import Model.Inventory;
-import Model.OutsourcedPart;
 import View_Controller.MainScreenController;
-import static Model.Inventory.getPartInventory;
 
 /**
  *
  * @author Zachary Mollenhour
  */
-public class AlmirMuratovicC482 extends Application {
+public class ZacharyMollenhour extends Application {
     Stage window;
     private AnchorPane MainScreenView;
 
     public void initMainScreen() throws IOException{
 
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(AlmirMuratovicC482.class.getResource("/View_Controller/MainScreen.fxml"));
+        loader.setLocation(ZacharyMollenhour.class.getResource("/View_Controller/MainScreen.fxml"));
         AnchorPane MainScreenView = (AnchorPane) loader.load();
     
         Scene scene = new Scene(MainScreenView);
@@ -39,7 +35,7 @@ public class AlmirMuratovicC482 extends Application {
     
     public void showMainScreen() throws IOException{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(AlmirMuratovicC482.class.getResource("/View_Controller/MainScreen.fxml"));
+        loader.setLocation(ZacharyMollenhour.class.getResource("/View_Controller/MainScreen.fxml"));
         AnchorPane MainScreenView = (AnchorPane) loader.load();
         
         MainScreenController controller = loader.getController();
@@ -49,7 +45,7 @@ public class AlmirMuratovicC482 extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         window = primaryStage;
-        window.setTitle("Inventory Mangement System"); 
+        window.setTitle("Inventory Management System");
         initMainScreen();
         showMainScreen();
         

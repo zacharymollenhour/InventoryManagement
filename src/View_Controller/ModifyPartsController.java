@@ -34,13 +34,27 @@ import static Model.Inventory.getPartInventory;
  * FXML Controller class
  *
  * @author Zachary Mollenhour
+ * ALL CODE WRITTEN IS AUTHORED AND REVIEWED BY ZACHARY MOLLENHOUR
+ * 9/10/2020
  */
+
+//Modify Parts Controller
 public class ModifyPartsController implements Initializable {
 
+    //Local Variables for parts
     private boolean isOutsourced;
     int partIndex = partToModifyIndex();
     private String exceptionMessage = new String();
     private int partID;
+
+    @FXML
+    private TextField ModifyPartsDynField;
+    @FXML
+    private TextField ModifyPartsMaxField;
+    @FXML
+    private Label DynModifyPartLabel;
+    @FXML
+    private RadioButton ModifyPartsInHouseRadioButton;
 
     @FXML
     private TextField ModifyPartsIDField;
@@ -53,26 +67,20 @@ public class ModifyPartsController implements Initializable {
     @FXML
     private TextField ModifyPartsMinField;
     @FXML
-    private TextField ModifyPartsDynField;
-    @FXML
-    private TextField ModifyPartsMaxField;
-    @FXML
-    private Label DynModifyPartLabel;
-    @FXML
-    private RadioButton ModifyPartsInHouseRadioButton;
-    @FXML
     private RadioButton ModifyPartsOutsourcedRadioButton;
+
+
+    //Form Buttons
+    @FXML
+    void ModifyPartsInHouseRadio(ActionEvent event) {
+        isOutsourced = false;
+        DynModifyPartLabel.setText("Machine ID");
+    }
 
     @FXML
     void ModifyPartsOutsourcedRadio(ActionEvent event) {
         isOutsourced = true;
         DynModifyPartLabel.setText("Company Name.");
-    }
-
-    @FXML
-    void ModifyPartsInHouseRadio(ActionEvent event) {
-        isOutsourced = false;
-        DynModifyPartLabel.setText("Machine ID");
     }
 
     @FXML
@@ -151,7 +159,7 @@ public class ModifyPartsController implements Initializable {
     }
 
     /**
-     * Initializes the controller class.
+     * Initializes a controller class
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
